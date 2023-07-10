@@ -70,6 +70,9 @@ executable website
     -- Other library packages from which modules are imported.
     build-depends:      base
                       , twain
+                      , network
+                      , warp
+                      , bytestring
 
     -- Directories containing source files.
     hs-source-dirs:   app
