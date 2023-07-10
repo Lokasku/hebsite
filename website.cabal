@@ -73,6 +73,8 @@ executable website
                       , network
                       , warp
                       , bytestring
+                      , text
+                      , bytestring
 
     -- Directories containing source files.
     hs-source-dirs:   app
