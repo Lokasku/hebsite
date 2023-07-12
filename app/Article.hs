@@ -1,31 +1,17 @@
-{-# LANGUAGE BlockArguments #-}
-{-# LANGUAGE ExtendedDefaultRules #-}
-{-# LANGUAGE OverloadedStrings #-}
-
 module Article where
 
+import Article.ThisBlog as ThisBlog
+import Data.ByteString.Lazy.Internal
+import Data.Char (toLower)
+import Data.List (intercalate)
 import Data.String (fromString)
-import Data.Text
 import Lucid
-import Lucid.Html5
+import Template (Informations)
 
-data Article a = Article
-  { author :: String,
-    date :: String,
-    title :: String,
-    content :: HtmlT a ()
-  }
+toPath :: String -> FilePath
+toPath p = map toLower $ intercalate "-" . words $ p
 
-header :: Monad a => String -> HtmlT a () -> HtmlT a ()
-header t c =
-  doctypehtml_
-    ( do
-        ( head_
-            ( do
-                meta_ [charset_ "utf-8"]
-                title_ (toHtml t)
-                link_ [rel_ "stylesheet", href_ "../assets/base.css"]
-            )
-          )
-        body_ c
-    )
+articles :: [(FilePath, Informations)]
+articles =
+  [ (toPath ThisBlog.title, (ThisBlog.author, ThisBlog.date, ThisBlog.title, ThisBlog.content))
+  ]

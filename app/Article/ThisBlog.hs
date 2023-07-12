@@ -1,15 +1,25 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import Article
+module Article.ThisBlog
+  ( author,
+    date,
+    title,
+    content,
+  )
+where
+
 import Data.Functor.Identity
 import Lucid
 import Lucid.Html5
 
-article :: Article Identity
-article = Article "Luke" "today" "This Blog" (header (title article) c)
+author = "Luke"
 
-c :: Monad a => HtmlT a ()
-c = do
+date = "today"
+
+title = "This Blog"
+
+content :: HtmlT Identity ()
+content = do
   div_
     ( do
         p_ "Hi everyone"

@@ -2,21 +2,24 @@
 
 module Route where
 
+import Lucid
 import Data.ByteString.Lazy.Internal
 import Web.Twain
+import Web.Twain.Types
+import Article (articles)
+import Template as T
+-- import Page (home, about)
+
+get' :: PathPattern -> ByteString -> Middleware
+get' fp c = get fp $ send $ html c
 
 routes :: [Middleware]
 routes =
-  [ get "/" $ send $ html "<p>welcome</p>",
-    get "/about" $ send $ html "<p>about me</p>",
+  [ get' "/" "<p>welcome</p>",
+    get' "/about" "<p>about me</p>",
     get "/:article" $ do
       name <- pathParam "article"
       case lookup name articles of
         Nothing -> next
-        Just article -> send $ html article
-  ]
-
-articles :: [(FilePath, ByteString)]
-articles =
-  [ ("this-blog", "haha, just some blog, what a question")
+        Just (a, d, t, c) -> send (html (renderBS (T.header t (T.article (a, d, t, c)))))
   ]
