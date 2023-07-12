@@ -20,17 +20,3 @@ articles :: [(FilePath, ByteString)]
 articles =
     [ ("this-blog", "haha, just some blog, what a question")
     ]
-
-{- genTree :: Routes -> Tree
-genTree = List.foldl (\ acc (p, c) ->
-                if List.notElem p (List.map fst tree)
-                then get p (send (html (c))) : acc
-                else get p (send (html (c))) : acc
-                ) []
-
-tree :: Routes
-tree = [ ("/", "Welcome")
-       , ("/about", "About me")
-       , ("/:article", "An article called : ")
-       ]
--}
