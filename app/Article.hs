@@ -13,5 +13,6 @@ toPath p = map toLower $ intercalate "-" . words $ p
 
 articles :: [(FilePath, Informations)]
 articles =
-  [ (toPath ThisBlog.title, (ThisBlog.author, ThisBlog.date, ThisBlog.title, ThisBlog.content))
+  [ (toPath ThisBlog.title, (ThisBlog.author, ThisBlog.date, ThisBlog.title, ThisBlog.content)),
+    (toPath ThisBlog.title, (ThisBlog.author, ThisBlog.date, ThisBlog.title, ThisBlog.content))
   ]

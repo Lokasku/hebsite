@@ -2,21 +2,22 @@
 
 module Route where
 
-import Lucid
+import Article (articles)
 import Data.ByteString.Lazy.Internal
+import Lucid
+import Route.About as About
+import Route.Home as Home
+import Template as T
 import Web.Twain
 import Web.Twain.Types
-import Article (articles)
-import Template as T
--- import Page (home, about)
 
 get' :: PathPattern -> ByteString -> Middleware
 get' fp c = get fp $ send $ html c
 
 routes :: [Middleware]
 routes =
-  [ get' "/" "<p>welcome</p>",
-    get' "/about" "<p>about me</p>",
+  [ get' "/" $ renderBS Home.home,
+    get' "/about" $ renderBS About.about,
     get "/:article" $ do
       name <- pathParam "article"
       case lookup name articles of
