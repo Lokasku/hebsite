@@ -22,4 +22,4 @@ showArticles ((p, (a, d, t, _)) : xs) =
     <> showArticles xs
 
 home :: HtmlC
-home = T.header "Home" $ showArticles Article.articles
+home = T.header "Home" "base.css" $ showArticles Article.articles

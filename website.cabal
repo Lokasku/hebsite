@@ -72,7 +72,6 @@ executable website
                       , twain
                       , network
                       , warp
-                      , bytestring
                       , text
                       , bytestring
                       , lucid2
