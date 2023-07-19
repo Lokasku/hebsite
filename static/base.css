@@ -4,5 +4,44 @@ body {
 }
 
 .topbar {
-    background-color: grey;
+    margin: 0;
+    padding: 5px;
+    list-style: none;
+    border-bottom: 2px solid #bdbcbc;
+    background-color: #d7d5d5;
+}
+
+.topbar li {
+    font-family: monospace;
+    margin-right: 10px;
+    display: inline;
+}
+
+.topbar li a {
+    color: #68429f;
+    text-decoration: none;
+}
+
+.article {
+    border-top: 1px solid black;
+    margin: 10px 5px;
+}
+
+.author, .date, .title {
+    margin-right: 10px;
+}
+
+.author {
+    color: #ff6f27;
+}
+
+.date {
+    color: #8552a8;
+    font-style: italic;
+}
+
+.title a {
+    color: #6b45a4;
+    text-decoration: none;
+    font-weight: bold;
 }

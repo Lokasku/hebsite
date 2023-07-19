@@ -13,12 +13,16 @@ import Template as T
 showArticles :: [(FilePath, T.Informations)] -> T.HtmlC
 showArticles [] = mempty
 showArticles ((p, (a, d, t, _)) : xs) =
-  ( do
-      hr_ []
-      p_ (fromString a)
-      p_ (fromString d)
-      h3_ (a_ [href_ (fromString p)] (fromString t))
-  )
+  div_
+    [class_ "article"]
+    ( do
+        p_
+          [class_ "articl-info"]
+          ( span_ [class_ "author"] (fromString a)
+              <> span_ [class_ "date"] (fromString d)
+              <> span_ [class_ "title"] (a_ [href_ (fromString p)] (fromString t))
+          )
+    )
     <> showArticles xs
 
 home :: HtmlC
