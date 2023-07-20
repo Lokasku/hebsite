@@ -26,19 +26,41 @@ header t l c =
                 link_ [rel_ "stylesheet", href_ (append (fromString "static/") (fromString l))]
             )
           )
-        body_ (do
-                 ul_ [class_ "topbar"] (do
-                        li_ (a_ [href_ "/"] "home")
-                        li_ (a_ [href_ "/about"] "about")
-                     )
-                 c
-              )
+        body_
+          ( do
+              div_
+                [class_ "navbar"]
+                ( do
+                    ul_
+                      [class_ "left"]
+                      ( do
+                          li_ (a_ [href_ "/"] "Home")
+                          li_ (a_ [href_ "/about"] "About")
+                      )
+                    ul_
+                      [class_ "right"]
+                      ( do
+                          li_ (a_ [href_ "https://twitter.com/lokasku"] "Twitter")
+                          li_ (a_ [href_ "https://github.com/Lokasku"] "GitHub")
+                          li_ (a_ [href_ "mailto:lukasku@proton.me"] "Mail")
+                      )
+                )
+              div_ [class_ "content"] c
+          )
     )
 
 article :: Informations -> HtmlC
 article (a, d, t, c) = do
-  p_ (fromString a)
-  p_ (fromString d)
-  h2_ (fromString t)
-  hr_ []
+  div_
+    [class_ "informations"]
+    ( do
+        h1_ [class_ "title"] (fromString t)
+        p_
+          ( (fromString "Written by ")
+              <> span_ [class_ "author"] (fromString a)
+              <> (fromString " on ")
+              <> span_ [class_ "date"] (fromString d)
+              <> (fromString ".")
+          )
+    )
   c

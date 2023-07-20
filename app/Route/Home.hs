@@ -16,11 +16,11 @@ showArticles ((p, (a, d, t, _)) : xs) =
   div_
     [class_ "article"]
     ( do
+        p_ [class_ "title"] $ a_ [href_ (fromString p)] (fromString t)
         p_
-          [class_ "articl-info"]
           ( span_ [class_ "author"] (fromString a)
+              <> span_ [class_ "sep"] (fromString " ~ ")
               <> span_ [class_ "date"] (fromString d)
-              <> span_ [class_ "title"] (a_ [href_ (fromString p)] (fromString t))
           )
     )
     <> showArticles xs
