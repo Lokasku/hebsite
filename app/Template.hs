@@ -4,16 +4,29 @@
 
 module Template where
 
+import Control.Monad.IO.Class (liftIO)
 import Data.Functor.Identity
 import Data.Monoid
 import Data.String (fromString)
-import Data.Text
+import Data.Text as T
 import Lucid
 import Lucid.Html5
+import System.IO (readFile)
+import Web.Twain
 
 type Informations = (String, String, String, HtmlC)
 
-type HtmlC = HtmlT Identity ()
+type HtmlC = HtmlT IO ()
+
+getSvgContent :: String -> IO String
+getSvgContent = readFile
+
+loadSVG :: IO String -> HtmlC
+loadSVG c = do
+  svg <- liftIO c
+  toHtmlRaw svg
+
+svg = (loadSVG . getSvgContent)
 
 header :: String -> String -> HtmlC -> HtmlC
 header t l c =
@@ -23,7 +36,7 @@ header t l c =
             ( do
                 meta_ [charset_ "utf-8"]
                 title_ (toHtml t)
-                link_ [rel_ "stylesheet", href_ (append (fromString "static/") (fromString l))]
+                link_ [rel_ "stylesheet", href_ (T.append (fromString "/static/") (fromString l))]
             )
           )
         body_
@@ -40,9 +53,9 @@ header t l c =
                     ul_
                       [class_ "right"]
                       ( do
-                          li_ (a_ [href_ "https://twitter.com/lokasku"] "Twitter")
-                          li_ (a_ [href_ "https://github.com/Lokasku"] "GitHub")
-                          li_ (a_ [href_ "mailto:lukasku@proton.me"] "Mail")
+                          li_ (a_ [href_ "https://twitter.com/lokasku"] $ svg "assets/svg/twitter.svg")
+                          li_ (a_ [href_ "https://github.com/Lokasku"] $ svg "assets/svg/github.svg")
+                          li_ (a_ [href_ "mailto:lukasku@proton.me"] $ svg "assets/svg/mail.svg")
                       )
                 )
               div_ [class_ "content"] c

@@ -47,7 +47,7 @@ body {
     font-weight: 500;
 }
 
-.navbar li a:hover {
+.navbar li svg:hover {
     background-color: #4b4b4b;
 }
 
@@ -57,6 +57,17 @@ body {
 
 .navbar .right li {
     margin-left: 10px;
+}
+
+.navbar li a svg {
+    width: 15px;
+    height: auto;
+
+    fill: white;
+}
+
+svg #Icons {
+    fill: none;
 }
 
 /* Article */

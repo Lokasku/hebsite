@@ -18,15 +18,27 @@ get' fp c = get fp $ send $ html c
 
 routes :: [Middleware]
 routes =
-  [ get' "/" $ renderBS Home.home,
-    get' "/about" $ renderBS About.about,
+  [ get "/" $ do
+      content <- liftIO $ renderBST Home.home
+      send (html content),
+    get "/about" $ do
+      content <- liftIO $ renderBST About.about
+      send (html content),
     get "/static/:file" $ do
       file <- pathParam "file"
-      path <- liftIO $ DBL.readFile ("static/" ++ file)
-      send (css path),
+      content <- liftIO $ DBL.readFile ("static/" ++ file)
+      send (css content),
+    {- get "/assets/:folder/:file" $ do
+      folder <- pathParam "folder"
+      file <- pathParam "file"
+      content <- liftIO $ DBL.readFile ("assets/" ++ folder ++ "/" ++ file)
+      send (xml content), -}
     get "/:article" $ do
       name <- pathParam "article"
       case lookup name articles of
         Nothing -> next
-        Just (a, d, t, c) -> send (html (renderBS (T.header t "article.css" (T.article (a, d, t, c)))))
+        Just (a, d, t, c) -> do
+          content <- liftIO $ renderBST (T.header t "article.css" (T.article (a, d, t, c)))
+          send (html content)
+          -- send (html (liftIO (renderBST (T.header t "article.css" (T.article (a, d, t, c))))))
   ]

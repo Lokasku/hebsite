@@ -19,11 +19,7 @@ code {
 }
 
 pre {
-    padding: 10px;
-
-    background-color: #eee;
-    border: 1px solid #ddd;
-    border-radius: 2px;
+    margin-left: 20px;
 }
 
 .informations {
