@@ -14,16 +14,16 @@ showArticles :: [(FilePath, T.Informations)] -> T.HtmlC
 showArticles [] = mempty
 showArticles ((p, (a, d, t, _)) : xs) =
   div_
-    [class_ "article"]
+  [class_ "bg-sky-500 focus:bg-sky-700"]
     ( do
-        p_ [class_ "title"] $ a_ [href_ (fromString p)] (fromString t)
+        p_ $ a_ [href_ (fromString p)] (fromString t)
         p_
-          ( span_ [class_ "author"] (fromString a)
-              <> span_ [class_ "sep"] (fromString " ~ ")
-              <> span_ [class_ "date"] (fromString d)
+          ( span_ (fromString a)
+              <> span_ (fromString " ~ ")
+              <> span_ (fromString d)
           )
     )
     <> showArticles xs
 
 home :: HtmlC
-home = T.header "Home" "base.css" $ showArticles Article.articles
+home = T.header "Home" "output.css" $ showArticles Article.articles

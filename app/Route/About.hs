@@ -8,7 +8,7 @@ import Lucid.Html5
 import Template as T
 
 about :: T.HtmlC
-about = T.header "About" "base.css" $ do
+about = T.header "About" "output.css" $ do
   div_
     ( do
         p_ "Hi, my name is Luke."

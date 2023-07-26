@@ -42,16 +42,14 @@ header t l c =
         body_
           ( do
               div_
-                [class_ "navbar"]
+                [class_ "bg-purple-100 md:bg-purple-300 lg:bg-purple-600 dark:rounded-lg"]
                 ( do
                     ul_
-                      [class_ "left"]
                       ( do
                           li_ (a_ [href_ "/"] "Home")
                           li_ (a_ [href_ "/about"] "About")
                       )
                     ul_
-                      [class_ "right"]
                       ( do
                           li_ (a_ [href_ "https://twitter.com/lokasku"] $ svg "assets/svg/twitter.svg")
                           li_ (a_ [href_ "https://github.com/Lokasku"] $ svg "assets/svg/github.svg")
@@ -65,14 +63,13 @@ header t l c =
 article :: Informations -> HtmlC
 article (a, d, t, c) = do
   div_
-    [class_ "informations"]
     ( do
-        h1_ [class_ "title"] (fromString t)
+        h1_ (fromString t)
         p_
           ( (fromString "Written by ")
-              <> span_ [class_ "author"] (fromString a)
+              <> span_ (fromString a)
               <> (fromString " on ")
-              <> span_ [class_ "date"] (fromString d)
+              <> span_ (fromString d)
               <> (fromString ".")
           )
     )
