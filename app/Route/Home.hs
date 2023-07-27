@@ -14,7 +14,6 @@ showArticles :: [(FilePath, T.Informations)] -> T.HtmlC
 showArticles [] = mempty
 showArticles ((p, (a, d, t, _)) : xs) =
   div_
-  [class_ "bg-sky-500 focus:bg-sky-700"]
     ( do
         p_ $ a_ [href_ (fromString p)] (fromString t)
         p_

@@ -1,9 +1,27 @@
+/* @import url('https://fonts.cdnfonts.com/css/helvetica-neue-55'); */
+@import url('https://fonts.cdnfonts.com/css/pp-neue-montreal');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer components {
-    p {
-        @apply text-purple-600 underline;
+@layer base {
+    h1 {
+        @apply text-7xl;
+    }
+    p, a, span, code, pre {
+        @apply text-5xl font-normal;
+    }
+
+    .ul-inline li, .ul-inline li a svg {
+        @apply inline;
+    }
+
+    svg path {
+        @apply fill-gray-300;
+    }
+
+    svg {
+        @apply w-auto h-[45px];
     }
 }

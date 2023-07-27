@@ -18,15 +18,12 @@ type Informations = (String, String, String, HtmlC)
 
 type HtmlC = HtmlT IO ()
 
-getSvgContent :: String -> IO String
-getSvgContent = readFile
-
 loadSVG :: IO String -> HtmlC
 loadSVG c = do
   svg <- liftIO c
   toHtmlRaw svg
 
-svg = (loadSVG . getSvgContent)
+svg = (loadSVG . readFile)
 
 header :: String -> String -> HtmlC -> HtmlC
 header t l c =
@@ -39,24 +36,23 @@ header t l c =
                 link_ [rel_ "stylesheet", href_ (T.append (fromString "/static/") (fromString l))]
             )
           )
-        body_
+        body_ [class_ "m-auto"]
           ( do
-              div_
-                [class_ "bg-purple-100 md:bg-purple-300 lg:bg-purple-600 dark:rounded-lg"]
+              div_  [class_ "flex justify-between items-center"]
                 ( do
-                    ul_
-                      ( do
+                    ul_ [class_ "ul-inline"]
+                      ( do 
                           li_ (a_ [href_ "/"] "Home")
                           li_ (a_ [href_ "/about"] "About")
                       )
-                    ul_
+                    ul_ [class_ "ul-inline"]
                       ( do
                           li_ (a_ [href_ "https://twitter.com/lokasku"] $ svg "assets/svg/twitter.svg")
                           li_ (a_ [href_ "https://github.com/Lokasku"] $ svg "assets/svg/github.svg")
                           li_ (a_ [href_ "mailto:lukasku@proton.me"] $ svg "assets/svg/mail.svg")
                       )
                 )
-              div_ [class_ "content"] c
+              div_ [class_ "relative"] (do c; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ [])
           )
     )
 
