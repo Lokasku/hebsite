@@ -37,7 +37,7 @@ routes =
       name <- pathParam "article"
       case lookup name articles of
         Nothing -> next
-        Just (a, d, t, c) -> do
-          content <- liftIO $ renderBST (T.header t "output.css" (T.article (a, d, t, c)))
+        Just (a, d, t, de, c) -> do
+          content <- liftIO $ renderBST (T.header t "output.css" (T.article (a, d, t, de, c)))
           send (html content)
   ]

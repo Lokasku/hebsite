@@ -10,7 +10,7 @@
         @apply text-7xl;
     }
     p, a, span, code, pre {
-        @apply text-5xl font-normal;
+        @apply text-4xl font-normal;
     }
 
     .ul-inline li, .ul-inline li a svg {

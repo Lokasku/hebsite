@@ -28,7 +28,6 @@
             cabal-plan
             ghcid
             haskell-language-server
-            tailwind
           ];
           packages = with pkgs; [
             zlib

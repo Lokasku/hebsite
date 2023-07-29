@@ -14,7 +14,7 @@ import Lucid.Html5
 import System.IO (readFile)
 import Web.Twain
 
-type Informations = (String, String, String, HtmlC)
+type Informations = (String, String, String, String, HtmlC)
 
 type HtmlC = HtmlT IO ()
 
@@ -38,26 +38,27 @@ header t l c =
           )
         body_ [class_ "m-auto"]
           ( do
-              div_  [class_ "flex justify-between items-center"]
+              header_ [class_ "w-full"]
                 ( do
-                    ul_ [class_ "ul-inline"]
+                    ul_ [class_ "ul-inline border-b-2 border-gray-300 py-[15px] mx-5"]
                       ( do 
-                          li_ (a_ [href_ "/"] "Home")
-                          li_ (a_ [href_ "/about"] "About")
-                      )
-                    ul_ [class_ "ul-inline"]
-                      ( do
-                          li_ (a_ [href_ "https://twitter.com/lokasku"] $ svg "assets/svg/twitter.svg")
-                          li_ (a_ [href_ "https://github.com/Lokasku"] $ svg "assets/svg/github.svg")
-                          li_ (a_ [href_ "mailto:lukasku@proton.me"] $ svg "assets/svg/mail.svg")
+                          li_ (a_ [href_ "/", class_ "text-neutral-600 font-medium mr-6"] "Home")
+                          li_ (a_ [href_ "/about", class_ "text-neutral-600 font-medium"] "About")
                       )
                 )
-              div_ [class_ "relative"] (do c; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ []; br_ [])
+              div_ [class_ ""] (do c)
+              footer_ [class_ "absolute bottom-0 w-full"] ( ul_ [class_ "ul-inline border-t-2 border-gray-300 text-center py-[15px] mx-5"]
+                      ( do
+                          li_ [class_ "mx-6"] (a_ [href_ "https://twitter.com/lokasku"] $ svg "assets/svg/twitter.svg")
+                          li_ [class_ "mx-6"] (a_ [href_ "https://github.com/Lokasku"] $ svg "assets/svg/github.svg")
+                          li_ [class_ "mx-6"] (a_ [href_ "mailto:lukasku@proton.me"] $ svg "assets/svg/mail.svg")
+                      )
+                  )
           )
     )
 
 article :: Informations -> HtmlC
-article (a, d, t, c) = do
+article (a, d, t, _, c) = do
   div_
     ( do
         h1_ (fromString t)
