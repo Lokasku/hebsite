@@ -6,15 +6,24 @@
 @tailwind utilities;
 
 @layer base {
-    h1 {
-        @apply text-7xl;
-    }
     p, a, span, code, pre {
-        @apply text-4xl font-normal;
+        @apply text-base font-normal;
     }
 
-    .ul-inline li, .ul-inline li a svg {
-        @apply inline;
+    a {
+        @apply text-[#06c] hover:underline;
+    }
+
+    pre {
+        @apply border border-gray-200 bg-gray-50 rounded text-sm p-2 my-3;
+    }
+
+    ul {
+        @apply my-1 list-disc pl-8;
+    }
+
+    .ol-inline li, .ol-inline li a svg {
+        @apply inline !p-0;
     }
 
     svg path {
@@ -22,6 +31,6 @@
     }
 
     svg {
-        @apply w-auto h-[45px];
+        @apply w-auto h-6;
     }
 }

@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       'sans': ['PP Neue Montreal', 'Helvetica', 'sans-serif'],
+      'mono': ['monospace']
     },
     extend: {}
   },

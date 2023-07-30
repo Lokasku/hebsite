@@ -5,7 +5,7 @@ module Article.ThisBlog
     date,
     title,
     description,
-    content
+    content,
   )
 where
 
@@ -25,11 +25,16 @@ content :: HtmlT IO ()
 content = do
   div_
     ( do
-        p_ "hello, guys."
-        p_ "Yeah, booooooooy!"
-        a_ [href_ "#"] "Lubie jablko i jajko"
+        p_
+          ( "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut "
+              <> a_ [href_ "#"] "enim ad minim"
+              <> " veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute "
+              <> code_ "irure"
+              <> " dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat "
+              <> a_ [href_ "#"] "cupidatat"
+              <> " non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+          )
         pre_ $
           "main :: IO ()\n\
           \main = putStrLn \"hello, everyone\""
     )
-  a_ [href_ "https://apple.com"] "Click here"
