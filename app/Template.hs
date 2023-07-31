@@ -36,7 +36,7 @@ header t l c =
                 link_ [rel_ "stylesheet", href_ (T.append (fromString "/static/") (fromString l))]
             )
           )
-        body_ [class_ "flex justify-center m-auto max-w-5xl"] $
+        body_ [class_ "flex justify-center m-auto max-w-5xl"] $ do
           div_
             [class_ "w-full sm:w-9/12 sm:flex sm:flex-col sm:justify-center sm:items-start"]
             ( do
@@ -51,16 +51,16 @@ header t l c =
                         )
                   )
                 div_ [class_ "w-full"] c
-                footer_
-                  [class_ "absolute bottom-0 w-full sm:w-9/12"]
-                  ( ol_
-                      [class_ "ol-inline text-center py-3 mx-2"]
-                      ( do
-                          li_ [class_ "mx-6"] (a_ [href_ "https://twitter.com/lokasku"] $ svg "assets/svg/twitter.svg")
-                          li_ [class_ "mx-6"] (a_ [href_ "https://github.com/Lokasku"] $ svg "assets/svg/github.svg")
-                          li_ [class_ "mx-6"] (a_ [href_ "mailto:lukasku@proton.me"] $ svg "assets/svg/mail.svg")
-                      )
-                  )
+            )
+          footer_
+            [class_ "absolute bottom-0 mt-4"]
+            ( ol_
+                [class_ "inline-block ol-inline text-center inset-x-1/2 py-3 mx-2"]
+                ( do
+                    li_ [class_ "mx-6"] (a_ [href_ "https://twitter.com/lokasku"] $ svg "assets/svg/twitter.svg")
+                    li_ [class_ "mx-6"] (a_ [href_ "https://github.com/Lokasku"] $ svg "assets/svg/github.svg")
+                    li_ [class_ "mx-6"] (a_ [href_ "mailto:lukasku@proton.me"] $ svg "assets/svg/mail.svg")
+                )
             )
     )
 

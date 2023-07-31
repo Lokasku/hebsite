@@ -602,6 +602,11 @@ hr{
   position: absolute;
 }
 
+.inset-x-1\/2{
+  left: 50%;
+  right: 50%;
+}
+
 .bottom-0{
   bottom: 0px;
 }
@@ -652,12 +657,24 @@ hr{
   margin-top: 1.5rem;
 }
 
+.mt-4{
+  margin-top: 1rem;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
 .flex{
   display: flex;
 }
 
 .w-full{
   width: 100%;
+}
+
+.w-auto{
+  width: auto;
 }
 
 .max-w-5xl{
