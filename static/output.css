@@ -442,6 +442,10 @@ p, a, span, code, pre{
   font-weight: 400;
 }
 
+p{
+  margin-top: 0.5rem;
+}
+
 a{
   --tw-text-opacity: 1;
   color: rgb(0 102 204 / var(--tw-text-opacity));
@@ -451,18 +455,18 @@ a:hover{
   text-decoration-line: underline;
 }
 
+/* pre {
+        @apply border border-gray-200 bg-gray-50 rounded text-sm text-neutral-700 p-2 my-3;
+    } */
+
 pre{
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
-  border-radius: 0.25rem;
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgb(229 231 235 / var(--tw-border-opacity));
-  --tw-bg-opacity: 1;
-  background-color: rgb(249 250 251 / var(--tw-bg-opacity));
-  padding: 0.5rem;
+  margin-left: 1rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
+  --tw-text-opacity: 1;
+  color: rgb(64 64 64 / var(--tw-text-opacity));
 }
 
 ul{
@@ -484,6 +488,14 @@ svg path{
 svg{
   height: 1.5rem;
   width: auto;
+}
+
+hr{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-style: dashed;
+  --tw-border-opacity: 1;
+  border-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 
 *, ::before, ::after{
@@ -679,16 +691,17 @@ svg{
   padding-bottom: 0.25rem;
 }
 
+.py-3{
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
 .pb-3{
   padding-bottom: 0.75rem;
 }
 
 .text-center{
   text-align: center;
-}
-
-.font-mono{
-  font-family: monospace;
 }
 
 .text-2xl{

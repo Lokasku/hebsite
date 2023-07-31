@@ -54,7 +54,7 @@ header t l c =
                 footer_
                   [class_ "absolute bottom-0 w-full sm:w-9/12"]
                   ( ol_
-                      [class_ "ol-inline text-center py-1 mx-2"]
+                      [class_ "ol-inline text-center py-3 mx-2"]
                       ( do
                           li_ [class_ "mx-6"] (a_ [href_ "https://twitter.com/lokasku"] $ svg "assets/svg/twitter.svg")
                           li_ [class_ "mx-6"] (a_ [href_ "https://github.com/Lokasku"] $ svg "assets/svg/github.svg")
@@ -75,7 +75,7 @@ article (a, d, t, _, c) = do
           ( (fromString "Written by ")
               <> span_ [class_ "text-sm text-red-400"] (fromString a)
               <> (fromString " on ")
-              <> span_ [class_ "text-sm font-mono"] (fromString d)
+              <> span_ [class_ "text-sm"] (fromString d)
               <> (fromString ".")
           )
     )

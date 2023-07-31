@@ -10,12 +10,19 @@
         @apply text-base font-normal;
     }
 
+    p {
+        @apply mt-2;
+    }
+
     a {
         @apply text-[#06c] hover:underline;
     }
 
+    /* pre {
+        @apply border border-gray-200 bg-gray-50 rounded text-sm text-neutral-700 p-2 my-3;
+    } */
     pre {
-        @apply border border-gray-200 bg-gray-50 rounded text-sm p-2 my-3;
+        @apply text-sm text-neutral-700 my-3 ml-4;
     }
 
     ul {
@@ -32,5 +39,9 @@
 
     svg {
         @apply w-auto h-6;
+    }
+
+    hr {
+        @apply border-dashed border-gray-300 my-4;
     }
 }
