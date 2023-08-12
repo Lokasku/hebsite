@@ -1,4 +1,5 @@
-{-# LANGUAGE OverloadedStrings, BlockArguments #-}
+{-# LANGUAGE BlockArguments #-}
+{-# LANGUAGE OverloadedStrings #-}
 
 module Route where
 
@@ -28,10 +29,10 @@ routes =
     get "/static/:file" $ do
       file <- pathParam "file"
       if ".css" `List.isSuffixOf` file
-      then do
-        content <- liftIO $ DBL.readFile ("static/" ++ file)
-        send (css content)
-      else send $ status status404 $ text "fuck your mom",
+        then do
+          content <- liftIO $ DBL.readFile ("static/" ++ file)
+          send (css content)
+        else send $ status status404 $ text "Pieprzyć swoją mamę.",
     {- get "/assets/:folder/:file" $ do
       folder <- pathParam "folder"
       file <- pathParam "file"
