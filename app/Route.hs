@@ -1,4 +1,4 @@
-{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE OverloadedStrings, BlockArguments #-}
 
 module Route where
 
@@ -6,6 +6,7 @@ import Article (articles)
 import Control.Monad.IO.Class (liftIO)
 import Data.ByteString.Lazy as DBL
 import Data.ByteString.Lazy.Internal
+import Data.List as List
 import Lucid
 import Route.About as About
 import Route.Home as Home
@@ -26,8 +27,11 @@ routes =
       send (html content),
     get "/static/:file" $ do
       file <- pathParam "file"
-      content <- liftIO $ DBL.readFile ("static/" ++ file)
-      send (css content),
+      if ".css" `List.isSuffixOf` file
+      then do
+        content <- liftIO $ DBL.readFile ("static/" ++ file)
+        send (css content)
+      else send $ status status404 $ text "fuck your mom",
     {- get "/assets/:folder/:file" $ do
       folder <- pathParam "folder"
       file <- pathParam "file"
